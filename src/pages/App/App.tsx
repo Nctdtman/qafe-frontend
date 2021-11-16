@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       这是首页
-      <p>
+      <p className="font-bold">
         这是传参id
         <span>{id}</span>
       </p>
