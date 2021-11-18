@@ -1,24 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { RecoilRoot } from 'recoil'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import 'antd/dist/antd.css'
 
-import App from './pages/App/App'
+import RouterMananger from './RouterMananger'
+
 import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <App />
-          </Route>
-          <Route path="/:id">
-            <App />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <RouterMananger />
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root'),
