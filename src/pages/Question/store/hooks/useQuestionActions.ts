@@ -1,14 +1,33 @@
-import { ComponentProps, useState } from 'react'
-import { Checkbox, Radio } from 'antd'
-import { CheckboxValueType } from 'antd/lib/checkbox/Group'
+import { ComponentProps, useEffect, useState } from 'react'
+import { Checkbox, message, Radio } from 'antd'
+import { commitAnswer } from '../service'
+import { useRequest } from 'ahooks'
+
+import { SelectType } from '../../Components/Question'
 
 type Func<T> = T extends any ? (args: T) => void : never
 type FuncIntersection<T> = Func<T> extends (arg: infer T) => any ? T : never
 
-type SelectType = string | CheckboxValueType[]
+export default function (
+  initialSelect: SelectType,
+  isMultiple: boolean,
+  afterCommit: () => void,
+) {
+  const [select, setSelect] = useState<SelectType>(initialSelect)
+  useEffect(() => {
+    setSelect(initialSelect)
+  }, [initialSelect.toString()])
 
-export default function (isMultiple: boolean) {
-  const [select, setSelect] = useState<SelectType>()
+  const { run, loading, error } = useRequest(commitAnswer, {
+    manual: true,
+    onError() {
+      message.error('答案提交失败')
+    },
+    onSuccess(data) {
+      message.success('答案提交成功' + data.message)
+      afterCommit()
+    },
+  })
 
   const Option = isMultiple ? Checkbox : Radio
 
@@ -19,14 +38,20 @@ export default function (isMultiple: boolean) {
     if (!Array.isArray(value)) {
       vals = value.target.value as string
     } else {
-      vals = value
+      vals = value.map(String)
     }
     setSelect(vals)
   }
 
-  const handleCommit: () => void = () => {
+  const handleCommit = () => {
     console.log(select)
+    if (!select || !select.length) {
+      message.error('选择不能为空')
+      return
+    }
+
+    run(select)
   }
 
-  return { Option, select, handleChange, handleCommit }
+  return { Option, select, handleChange, handleCommit, loading, error }
 }
