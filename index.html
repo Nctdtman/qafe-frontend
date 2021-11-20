@@ -5,6 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <script>
+      var width = document.documentElement.clientWidth || document.body.clientWidth
+      var ratio = (width / 375)
+      var fontsize = 100*ratio
+       document.getElementsByTagName('html')[0].style['font-size'] = fontsize + 'px'
+    </script>
   </head>
   <body>
     <div id="root"></div>
