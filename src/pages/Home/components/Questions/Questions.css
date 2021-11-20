@@ -1,0 +1,36 @@
+.questionItem {
+    padding-top: .1rem;
+    padding-bottom: .1rem;
+    display: flex;
+    border-bottom: 1px solid #f6f5fa;
+    height: .4rem;
+}
+.difficulty {
+    font-size: .12rem;
+    display: block;
+    width: .28rem;
+    height: .17rem;
+    background: #f6f5fa;
+    border-radius: .04rem;
+    color: rgb(139, 209, 170);
+    text-align: center;
+    line-height: .17rem;
+    margin: 0 .1rem ;
+    
+}
+.question-title {
+    text-align: center;
+    font-size: .12rem;
+    font-weight: bolder;
+    padding-right: 2.2rem;
+}
+
+.check-icon {
+    margin-top: -.05rem !important;
+    font-size: .2rem !important;
+}
+.check-icon-active {
+    margin-top: -.05rem !important;
+    font-size: .2rem !important;
+    color:green;
+}

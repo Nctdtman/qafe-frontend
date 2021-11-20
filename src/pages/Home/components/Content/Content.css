@@ -1,0 +1,42 @@
+::-webkit-scrollbar {
+    display: none;
+}
+.content {
+    width: 100%;
+    position: absolute;
+    top: 1.35rem;
+    bottom: .51rem;
+    overflow-y: auto;
+    
+}
+html { overflow-y:hidden; }
+
+.ant-tabs-tab {
+    padding: .1rem .16rem !important;
+    
+    }
+.ant-tabs-nav {
+    padding-right: .5rem !important;
+}
+.ant-tabs {
+    overflow: none !important;
+}
+.ant-tabs-nav {
+    margin-bottom: 0 !important;
+}
+.ant-tabs-content-holder {
+    height: 100% !important;
+    
+}
+.ant-tabs {
+    height: 100% !important;
+    overflow: scroll !important;
+}
+.ant-tabs-tabpane {
+    position: relative !important;
+}
+.ant-dropdown-link {
+    position: absolute !important;
+    bottom: 5.65rem !important;
+    right: 0.18rem !important;
+}
